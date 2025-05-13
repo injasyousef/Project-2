@@ -115,6 +115,18 @@ def user_stats(df):
         print('\nBirth year data not available for this city.')
 
 
+def display_raw_data(df):
+    i = 0
+    while True:
+        raw = input('\nWould you like to see the raw data?  yes, no: ').lower()
+        if raw != 'yes':
+            break
+        print(df.iloc[i:i+5])
+        i += 5
+        if i >= len(df):
+            print("\nNo more data to display.")
+            break
+
 
 def main():
     while True:
@@ -125,6 +137,9 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+
+        display_raw_data(df)
+
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
